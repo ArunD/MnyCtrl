@@ -1,0 +1,19 @@
+Number of shares outstanding at the end of the year
+
+for sasken calculcate what would be the stock price in 2017
+
+
+daily stock price: 
+http://www.bseindia.com/markets/equity/EQReports/BhavCopyDebt.aspx?expandable=3
+https://www.nseindia.com/products/content/equities/equities/eq_security.htm
+
+Currently this is manual .i have to go and download.
+after integrating with selenium this can be automated
+
+
+historical stock price:
+
+http://www.bseindia.com/markets/equity/EQReports/StockPrcHistori.aspx?expandable=7&scripcode=532663&flag=sp&Submit=G
+https://www.nseindia.com/products/content/equities/equities/eq_security.htm --provides only 2 years historical data
+
+it is to be integrated with selenium 
