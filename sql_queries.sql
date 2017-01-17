@@ -6,6 +6,75 @@ CREATE TABLE `stock_list` (
   PRIMARY KEY (`stock_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=8025 DEFAULT CHARSET=latin1;
 
+create table stock_list_complete
+(
+stock_id mediumint(9) NOT NULL AUTO_INCREMENT,
+bse_Security_Code mediumint(9) NOT NULL ,
+Security_Id varchar(10) not null,
+Security_Name varchar(50) not null,
+Status varchar(10) not null,
+Group_tyype varchar(3) not null,
+Face_Value decimal(5,2) ,
+ISIN_No varchar(20) not null,
+Industry varchar(50),
+Instrument varchar(20),
+nse_securiy_code varchar(10) null,
+primary key (stock_id)
+)
+;
+
+create table stock_list_bse
+(
+bse_stock_id mediumint(9) NOT NULL AUTO_INCREMENT,
+bse_Security_Code mediumint(10) ,
+Security_Id varchar(50) ,
+Security_Name varchar(50) ,
+Status varchar(10) ,
+Group_type varchar(3) ,
+Face_Value decimal(5,2) ,
+ISIN_No varchar(20) ,
+Industry varchar(100),
+Instrument varchar(20),
+primary key (bse_stock_id)
+)
+;
+
+create table stock_list_nse
+(
+nse_stock_id mediumint(9) NOT NULL AUTO_INCREMENT,
+Symbol varchar(30),
+ISIN_No varchar(30) ,
+Company varchar(100),
+First_Listing_Date varchar(100),
+Face_Value mediumint(5),
+Paid_Up_Value mediumint(5),
+Market_Lot mediumint(5),
+Industry varchar(5),
+primary key (nse_stock_id)
+)
+;
+
+create table nse_daily_stock_price
+(
+nse_daily_stock_price_id int(20) NOT NULL AUTO_INCREMENT,
+SYMBOL varchar(20),
+SERIES varchar(10),
+price_DATE date,
+PREV_CLOSE decimal(10,2),
+OPEN_PRICE decimal(10,2),
+HIGH_PRICE decimal(10,2),
+LOW_PRICE decimal(10,2),
+LAST_PRICE decimal(10,2),
+CLOSE_PRICE decimal(10,2),
+AVG_PRICE decimal(10,2),
+TTL_TRD_QNTY int(20),
+TURNOVER_LACS decimal(10,2),
+NO_OF_TRADES int(10),
+DELIV_QTY int(10),
+DELIV_PER decimal(10,2),
+primary key(nse_daily_stock_price_id)
+);
+
 /*balance sheet*/
 CREATE TABLE `balance_sheet_detail` (
   `shr_detail_id` mediumint(9) NOT NULL AUTO_INCREMENT,
@@ -132,25 +201,14 @@ from ratios r
 CREATE TABLE stock_year_shares (
   stock_yr_shrs_id mediumint(9) NOT NULL AUTO_INCREMENT,
   stock_id mediumint(9) NOT NULL,
-  Year int(11) DEFAULT NULL,
-  No_of_Shares int(11) DEFAULT NULL,
+  share_date date not NULL,
+  No_of_Shares int(11) not NULL,
   PRIMARY KEY (stock_yr_shrs_id),
   FOREIGN KEY (stock_id) REFERENCES stock_list (stock_id)
-) ;
+) 
+;
 
-INSERT INTO stock_year_shares(stock_id,Year,No_of_Shares)
-VALUES(6066,2011,25711076);
-INSERT INTO stock_year_shares(stock_id,Year,No_of_Shares)
-VALUES(6066,2012,24512780);
-INSERT INTO stock_year_shares(stock_id,Year,No_of_Shares)
-VALUES(6066,2013,21181523);
-INSERT INTO stock_year_shares(stock_id,Year,No_of_Shares)
-VALUES(6066,2014,21317373);
-INSERT INTO stock_year_shares(stock_id,Year,No_of_Shares)
-VALUES(6066,2015,17701813);
-INSERT INTO stock_year_shares(stock_id,Year,No_of_Shares)
-VALUES(6066,2016,17719813);
-commit;
+
 
 
 select 
